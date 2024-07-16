@@ -31,7 +31,7 @@ func TestGetAllCustomers(t *testing.T) {
 	}
 }
 func TestReadCustomer(t *testing.T) {
-	customerJSON := `{"id": 3, "firstName": "Alice", "lastName": "Johnson", "email": "alice.johnson@example.com"}`
+	customerJSON := `{"id": 3, "Name": "Alice Johnson", "Phone": "125-676-343", "email": "alice.johnson@example.com", "contacted": false}`
 	req, err := http.NewRequest("POST", "/customers", strings.NewReader(customerJSON))
 	if err != nil {
 		t.Fatal(err)
@@ -44,9 +44,10 @@ func TestReadCustomer(t *testing.T) {
 
 	expectedCustomer := Customer{
 		ID:        3,
-		FirstName: "Alice",
-		LastName:  "Johnson",
+		Name:      "Alice Johnson",
+		Phone:     "125-676-343",
 		Email:     "alice.johnson@example.com",
+		Contacted: false,
 	}
 
 	if customer != expectedCustomer {

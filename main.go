@@ -11,9 +11,11 @@ import (
 
 type Customer struct {
 	ID        int    `json:"id"`
-	FirstName string `json:"firstName"`
-	LastName  string `json:"lastName"`
+	Name      string `json:"name"`
+	Role      string `json:"role"`
 	Email     string `json:"email"`
+	Phone     string `json:"phone"`
+	Contacted bool   `json:"contacted"`
 }
 
 var customers map[string]Customer
@@ -23,17 +25,21 @@ func seedCustomers() {
 
 	customer1 := Customer{
 		ID:        1,
-		FirstName: "John",
-		LastName:  "Doe",
+		Name:      "John Doe",
+		Role:      "Admin",
 		Email:     "john.doe@example.com",
+		Phone:     "123-456-7890",
+		Contacted: false,
 	}
 	customers["1"] = customer1
 
 	customer2 := Customer{
 		ID:        2,
-		FirstName: "Jane",
-		LastName:  "Smith",
+		Name:      "Jane Smith",
+		Role:      "User",
 		Email:     "jane.smith@example.com",
+		Phone:     "098-765-4321",
+		Contacted: true,
 	}
 	customers["2"] = customer2
 
